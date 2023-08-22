@@ -1,6 +1,7 @@
 class Automovel:
     #classe do carro
     def __init__(self , placa):
+        self.__placa = None
         print("Executand o construtor..")
         self.set_placa(placa)
     def get_placa(self):
@@ -8,7 +9,7 @@ class Automovel:
     def set_placa(self, placa):
         if len(placa) < 5:
             print("A placa não tem o suficiente ")
-            self.__placa = None
+
         else:
             self.__placa=placa
     def dirigir(self,velocidade):
