@@ -20,7 +20,7 @@ class pessoa:
         return self.__peso + peso2
     
     def envelhecer(self,idade2):
-        return self.__peso + idade2
+        return self.__idade + idade2
     
     
     def envelhecer(self,idade2):
