@@ -15,3 +15,9 @@ class Carro:
         self.gasolina += qtd
         print(f'Adicionado {qtd} litros ao tanque.')
 
+
+celta=Carro(12)
+celta.adicionarGasolina(50)
+print(celta.obterGasolina())
+celta.andar(12)
+print(celta.obterGasolina())
