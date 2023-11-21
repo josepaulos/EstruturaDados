@@ -1,0 +1,1 @@
+#. Calcule a altura de uma BST.

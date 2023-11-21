@@ -1,0 +1,1 @@
+#Determine se uma árvore é simétrica.
