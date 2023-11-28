@@ -42,11 +42,13 @@ def e_simetrica(raiz):
     # Cria a arvore 1
 raiz = NodoArvore(40)
 raiz.esquerda = NodoArvore(20)
-raiz.direita = NodoArvore(60)
-raiz.direita.esquerda = NodoArvore(50)
-raiz.direita.direita = NodoArvore(70)
+raiz.direita = NodoArvore(20)
+raiz.direita.esquerda = NodoArvore(30)
+raiz.direita.direita = NodoArvore(10)
 raiz.esquerda.esquerda = NodoArvore(10)
 raiz.esquerda.direita = NodoArvore(30)
+
+em_ordem(raiz)
 
 # Verifica se a árvore é simétrica
 if e_simetrica(raiz):

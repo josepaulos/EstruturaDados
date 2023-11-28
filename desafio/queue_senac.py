@@ -1,45 +1,34 @@
-from flask import Flask
+from flask import Flask, jsonify, request, render_template
 import random
-
+from fila import Fila, FilaService
 app = Flask(__name__)
 
-# Create here the code of queue data structure SENAC
-# You have create the follow methods:
-# put() => To add a new value into the linked structure (queue)
-# get() => To recovery the element of linked structure (queue)
+fila = Fila();
+@app.route('/', methods=['GET'])
+def index():
+    return render_template('index.html')
 
-
-
-# ####################################
-
-
+@app.route('/mostrar-fila', methods=['GET'])
+def mostrarFila():
+   '''Mostra todos os elementos da fila'''
+   return jsonify(fila.__str__()), 200
 
 @app.route('/start_processing', methods=['POST'])
 def start_queue_senac():
-    '''Every time you run this route, you must add a new Node to the Queue'''
+    '''Adiciona número aleatório de 0 até 9 na fila'''
     number = random.randint(0,9)
-    print(number, flush=True) # Example, We need to insert the variable number in the linked structure (queue)
-
-    # You must call put() method
-    # Your code here!
-
+    fila.inserir(number)
+    print(number, flush=True) 
     return '', 200
 
 @app.route('/pos_processing', methods=['POST'])
 def processing_queue_senac():
-    '''Every time you run this route you must retrieve the value from the queue. And run the code below!!'''
-    # You must call get() method
-    # Loop to empty the queue....
-    # For each value, print the value multiplied by 1000 and put a delay of 30 seconds.
-    # When the Queue is empty, inform on the screen (Print)
-    # Your code here!
-
+    '''Recuperar o número da fila'''
+    elemento =  request.get_json() #Pegando o json vindo do post
+    numero = int(elemento['numero']); # Convertendo o valor json do campo número de string para inteiro
+    response = FilaService.recoverElemento(fila, numero)
     print("Pos_Processing", flush=True)
-
-
-    return '', 200
-
-
+    return jsonify(response), 200
 
 if __name__ == '__main__':
     app.run(debug=__debug__)
